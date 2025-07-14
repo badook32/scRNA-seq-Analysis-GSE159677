@@ -59,7 +59,7 @@ install.packages("tidyverse")
 BiocManager::install(c("Seurat", "SingleCellExperiment", "scDblFinder", "SingleR", "bluster", "cerebroApp", "scran", "scater", "cluster"))
 
 
-▶️ How to Run
+## ▶️ How to Run
 Clone this repository or download the R script.
 
 Ensure your working directory is set to the folder containing the GSE159677 dataset in 10X Genomics format.
@@ -67,13 +67,13 @@ setwd("~/Desktop/.../GSE159677")
 source("GSE159677_Analysis.R")
 
 
-📄 License
+## 📄 License
 This repository is released under the MIT License.
 However, please also review the license of the referenced tutorial:
 https://romanhaa.github.io/projects/scrnaseq_workflow/
 
 
-📚 References
+## 📚 References
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE159677
 https://romanhaa.github.io/projects/scrnaseq_workflow/
 https://satijalab.org/seurat/
