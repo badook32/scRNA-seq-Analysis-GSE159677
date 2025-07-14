@@ -27,17 +27,17 @@ The workflow is based on the Seurat package and includes steps from data loading
 4. **Cell Quality Control**  
    - Mitochondrial transcript percentage  
    - Doublet detection with `scDblFinder`  
-   - Filtering by nCount, nFeature, and percent.mt
+   - Filtering by `nCount`, `nFeature`, and `percent.mt`
 5. **Gene Filtering**  
    - Retain genes expressed in ≥5 cells
 6. **Seurat Object Construction and Normalization**  
-   - Using `LogNormalize` and optional `SCTransform`
+   - Using `LogNormalize` and optionally `SCTransform`
 7. **Dimensionality Reduction & Clustering**  
-   - PCA, clustering with `FindClusters`
+   - PCA, UMAP, and `FindClusters`
 8. **Cluster Stability Assessment**  
    - Bootstrap-based probability matrix  
    - Silhouette score analysis  
-   - Cluster modularity and tree construction
+   - Modularity and cluster tree visualization
 9. **Sample-Cluster Composition Comparison**
 10. **Cell Cycle Scoring**
 
@@ -45,7 +45,7 @@ The workflow is based on the Seurat package and includes steps from data loading
 
 ## 🛠 Dependencies
 
-The script uses the following R packages:
+This script requires the following R packages:
 
 - `Seurat`
 - `scran`, `scater`, `scDblFinder`, `SingleR`
@@ -55,11 +55,28 @@ The script uses the following R packages:
 Install all dependencies using:
 
 ```r
-install.packages("tidyverse")
-BiocManager::install(c("Seurat", "SingleCellExperiment", "scDblFinder", "SingleR", "bluster", "cerebroApp", "scran", "scater", "cluster"))
+# CRAN packages
+install.packages(c("tidyverse", "ggforce", "ggridges", "patchwork", "viridis", "cluster"))
+
+# Bioconductor manager
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+  install.packages("BiocManager")
+}
+
+# Bioconductor packages
+BiocManager::install(c(
+  "Seurat",
+  "SingleCellExperiment",
+  "scDblFinder",
+  "SingleR",
+  "bluster",
+  "cerebroApp",
+  "scran",
+  "scater"
+))
+```
 
 ---
-
 ## ▶️ How to Run
 
 Clone this repository or download the R script file.
@@ -69,8 +86,8 @@ Ensure your working directory is set to the folder containing the GSE159677 data
 ```r
 setwd("~/Desktop/.../GSE159677")
 source("GSE159677_Analysis.R")
+```
 
----
 ## 📄 License
 This repository is released under the MIT License.
 
