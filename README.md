@@ -57,6 +57,7 @@ Install all dependencies using:
 ```r
 install.packages("tidyverse")
 BiocManager::install(c("Seurat", "SingleCellExperiment", "scDblFinder", "SingleR", "bluster", "cerebroApp", "scran", "scater", "cluster"))
+```r
 
 ---
 ## ▶️ How to Run
