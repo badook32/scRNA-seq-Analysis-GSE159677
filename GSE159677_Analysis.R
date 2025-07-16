@@ -242,7 +242,7 @@ transcripts$raw$merged <- do.call(cbind, transcripts$raw)
 # 병합된 행렬의 차원 확인
 dim(transcripts$raw$merged)
 
-# 3️⃣ 유전자명을 명시적으로 컬럼으로 변환
+# 유전자명을 명시적으로 컬럼으로 변환
 valid_samples <- transcripts$raw[names(transcripts$raw) != "merged"]  # 병합 데이터 제외
 valid_samples <- valid_samples[!sapply(valid_samples, is.null)]  # NULL 값 제외
 
@@ -259,7 +259,7 @@ for (i in seq_along(valid_samples)) {
     rownames_to_column(var = "gene")
 }
 
-# 4️⃣ 유전자별 발현값 합산
+# 유전자별 발현값 합산
 for (i in seq_along(valid_samples)) {
   valid_samples[[i]] <- valid_samples[[i]] %>%
     group_by(gene) %>%
@@ -267,20 +267,20 @@ for (i in seq_along(valid_samples)) {
     ungroup()
 }
 
-# 5️⃣ 유전자 기준으로 병합
+# 유전자 기준으로 병합
 transcripts$raw$merged <- Reduce(
   function(x, y) full_join(x, y, by = "gene"),  # gene을 기준으로 병합
   valid_samples
 )
 
-# 6️⃣ NA 값을 0으로 변환
+# NA 값을 0으로 변환
 transcripts$raw$merged[is.na(transcripts$raw$merged)] <- 0
 
-# 7️⃣ 유전자명을 rownames로 변환
+# 유전자명을 rownames로 변환
 transcripts$raw$merged <- transcripts$raw$merged %>%
   column_to_rownames(var = "gene")
 
-# 8️⃣ 유전자 유실 여부 확인
+# 유전자 유실 여부 확인
 original_genes <- unique(unlist(lapply(valid_samples, function(x) x$gene)))  # 원본 모든 샘플의 유전자 목록
 merged_genes <- rownames(transcripts$raw$merged)  # 병합 후 유전자 목록
 
@@ -289,11 +289,11 @@ missing_genes <- setdiff(original_genes, merged_genes)
 if (length(missing_genes) == 0) {
   cat("모든 유전자가 정상적으로 병합되었습니다.\n")
 } else {
-  cat("⚠️ 병합 과정에서", length(missing_genes), "개의 유전자가 유실됨!\n")
+  cat("⚠ 병합 과정에서", length(missing_genes), "개의 유전자가 유실됨!\n")
   print(missing_genes[1:20])  # 일부 유실된 유전자 출력
 }
 
-# 9️⃣ 최종 데이터 구조 확인
+# 최종 데이터 구조 확인
 str(transcripts$raw$merged)
 
 
