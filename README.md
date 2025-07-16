@@ -8,16 +8,6 @@ The workflow is based on the Seurat package and includes steps from data loading
 
 ---
 
-## 📁 File Overview
-
-| File | Description |
-|------|-------------|
-| `GSE159677_Analysis.R` | Main R script for processing and analyzing the dataset |
-| `plots/` | Directory where quality control and analysis plots are saved |
-| `data/` | Directory to save intermediate processed data |
-
----
-
 ## 🔬 Analysis Workflow
 
 1. **Package Loading and Color Palette Setup**
@@ -87,12 +77,6 @@ Ensure your working directory is set to the folder containing the GSE159677 data
 setwd("~/Desktop/.../GSE159677")
 source("GSE159677_Analysis.R")
 ```
-
-## 📄 License
-This repository is released under the MIT License.
-
-However, please also review the license of the referenced tutorial by Roman Haase:
-https://romanhaa.github.io/projects/scrnaseq_workflow/
 
 ---
 ## 📚 References
