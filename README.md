@@ -8,7 +8,7 @@ The workflow is based on the Seurat package and includes steps from data loading
 
 ---
 
-## 🔬 Analysis Workflow
+## Analysis Workflow
 
 1. **Package Loading and Color Palette Setup**
 2. **10X Genomics Data Import**  
@@ -33,7 +33,7 @@ The workflow is based on the Seurat package and includes steps from data loading
 
 ---
 
-## 🛠 Dependencies
+## Dependencies
 
 This script requires the following R packages:
 
@@ -67,7 +67,7 @@ BiocManager::install(c(
 ```
 
 ---
-## ▶️ How to Run
+## How to Run
 
 Clone this repository or download the R script file.
 
@@ -79,7 +79,7 @@ source("GSE159677_Analysis.R")
 ```
 
 ---
-## 📚 References
+## References
 GSE159677 - NCBI GEO
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE159677
 
